@@ -1,2 +1,0 @@
-<<<<<<< HEAD
-# taskboard-lite

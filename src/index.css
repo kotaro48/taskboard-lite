@@ -1,69 +1,63 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+/* コメント開始: CSS変数でトークンや暗色テーマの土台を提供し全体の可読性を高めるためのベースレイヤー by codeX */
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --color-bg: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-muted: #edf2fb;
+    --color-border: #e2e8f0;
+    --color-primary: #6366f1;
+    --color-primary-foreground: #f5f3ff;
+    --color-neutral: #0f172a;
+    --layout-max-width: 78rem;
+    --layout-gutter: clamp(1rem, 3vw, 2rem);
+    font-family: "Inter", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-neutral);
+    background-color: var(--color-bg);
   }
-  a:hover {
-    color: #747bff;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #050c1a;
+      --color-surface: #0f172a;
+      --color-surface-muted: #132030;
+      --color-border: #1f2937;
+      --color-primary: #8b5cf6;
+      --color-primary-foreground: #f5f3ff;
+      --color-neutral: #f8fafc;
+    }
   }
 }
+/* コメント終了 by codeX */
+
+/* コメント開始: レスポンシブ中央寄せのユーティリティを提供するためのコンポーネント層追加 by codeX */
+@layer components {
+  .app-container {
+    width: min(var(--layout-max-width), 100%);
+    margin-inline: auto;
+    padding-inline: var(--layout-gutter);
+  }
+}
+/* コメント終了 by codeX */
